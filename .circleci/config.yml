@@ -1,8 +1,9 @@
-version: 2
- jobs:
-   build:
-     docker:
-       - image: circleci/ruby:2.4.1
-     steps:
-       - checkout
-       - run: echo "A first hello"
+orbs:
+  win: circleci/windows@1.0.0
+
+jobs:
+  build-windows:
+    executor: win/vs2019
+    steps:
+      - checkout
+      - run: Write-Host 'Hello, Windows'
